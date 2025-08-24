@@ -5,7 +5,9 @@ import CartWidget from './CartWidget'
 export const NavBar = () => {
     return(
         <nav className="navbar">
+    <h1>NombreTienda</h1>
       <ul className="navbar-list">
+       
         <li className="navbar-item"><a href="#home">Inicio</a></li>
         <li className="navbar-item"><a href="#about">Acerca</a></li>
         <li className="navbar-item"><a href="#services">Servicios</a></li>
