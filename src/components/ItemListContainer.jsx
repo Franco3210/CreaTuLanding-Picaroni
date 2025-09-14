@@ -1,11 +1,33 @@
-import React from 'react'
- 
-  export const ItemListContainer = (props) => {
-  return (
-    <div className="itemlistcontainer">
-      <h2>{props.title}</h2>
-    </div>
-  )
-}
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ItemList from "./ItemList";
 
- //Una sola vez por archivo puedo usar esto
+const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { category } = useParams(); 
+
+  useEffect(() => {
+
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        let result = data.products;
+        if (category) {
+          result = result.filter((p) => p.category === category);
+        }
+        setProducts(result);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error al cargar productos", err);
+        setLoading(false);
+      });
+  }, [category]);
+
+  if (loading) return <p>Cargando productos...</p>;
+
+  return <ItemList products={products} />;
+};
+
+export default ItemListContainer;

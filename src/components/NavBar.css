@@ -1,26 +1,75 @@
-.navbar {
-  background-color: #003833;
-  padding: 1rem 100rem;
-  position:absolute;
-   top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.navbar-item.dropdown {
+  position: relative; /* el dropdown se posiciona relativo al <li> */
 }
+
+.dropbtn {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+.dropdown-content {
+  position: absolute;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+
+.dropdown-content li a {
+  color: rgb(255, 255, 255);
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content li a:hover {
+  background-color: #ddd;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;            
+  background-color: rgb(0, 0, 3);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h1 {
+  color: white; 
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 3rem;
+  margin: 0;
+  margin-left: 50px;
+}
+
 
 .navbar-list {
   list-style: none;
-  display: flex;
-  justify-content: space-around;
-  margin-top: 70px;
+  display:flex;
+  gap: 12px;     /* espacio entre cada li */
+  margin: 0;
   padding: 0;
 }
 
+
+/* Links */
 .navbar-item a {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-family: Georgia;
-  padding: 1rem 5rem;
-  font-size: 35px;
+  color: #fff;
+  font-weight:200;
+  font-size: 1.5rem; /* tamaño consistente */
+  text-decoration: none;
+  position:sticky;
+  padding: 0.5rem 1rem;
   transition: background 0.3s;
 }
 
@@ -29,11 +78,28 @@
   border-radius: 5px;
 }
 
+/* Botón */
 .btnCartWidget {
-  background: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  margin-top: 0;
+  margin-right: 30px; 
+  cursor: pointer;
+}
+
+.btnCartWidget button {
+  background-color: #ff9800;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+}
+
+.item-list {
+  display: flex;
+  flex-wrap: wrap;       
+  gap: 20px;             
+  justify-content: center; 
+  padding: 130px 20px;   
 }

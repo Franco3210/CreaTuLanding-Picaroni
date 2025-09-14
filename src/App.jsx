@@ -1,19 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { ItemListContainer } from './components/ItemListContainer'
-import {NavBar} from './components/NavBar'
-import './components/CartWidget'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { NavBar } from "./components/NavBar";
+import ItemListContainer from "./components/ItemListContainer";
+import "./App.css";
 
 
 function App() {
   return (
-    <>
-      <NavBar />
-      <ItemListContainer title="Un string mas" />
-    </>
+    
+    <BrowserRouter>
+    
+      <div className="main">
+        <NavBar />
+        <Routes>
+
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/categoria/:idCategoria" element={<ItemListContainer />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;

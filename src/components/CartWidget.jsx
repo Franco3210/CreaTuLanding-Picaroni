@@ -1,12 +1,18 @@
-import React from 'react'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./NavBar.css"
 
+export const CartWidget = () => {
+  return (
 
-function CartWidget() {
-  return <button className="btnCartWidget">
-
-    <img src="https://cdn-icons-png.flaticon.com/512/5234/5234583.png"  width={60} height={60} />
-  </button>
- 
-  }
-
-export default CartWidget
+      <NavLink to="/cart">
+        <button className="btnCartWidget">
+        <img
+          src="https://images.icon-icons.com/1138/PNG/512/1486395300-03-trolley_80567.png"
+          height={70}
+          width={70}
+        />
+        </button>
+      </NavLink>
+  );
+};

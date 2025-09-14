@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  background-color: rgb(0, 8, 72); /* por ejemplo, negro */
+  font-family: sans-serif;
+}
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
