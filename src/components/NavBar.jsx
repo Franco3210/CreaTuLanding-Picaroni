@@ -6,6 +6,7 @@ import { CartWidget } from "./CartWidget";
 export const NavBar = () => {
   const [open, setOpen] = useState(false);
 
+
   const toggleDropdown = () => {
     setOpen(!open);
   };

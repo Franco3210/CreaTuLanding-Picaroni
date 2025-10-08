@@ -6,8 +6,12 @@
   cursor: pointer;
   border: none;
   background: none;
-  color: inherit;
+  color: white;
   font-size: inherit;
+  font-weight:180;
+  font-size: 1.5rem;
+  padding: 0.4rem 0.9rem;
+  transition: background 0.3s;
 }
 
 .dropdown-content {

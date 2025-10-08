@@ -1,30 +1,34 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
+import { CartContext } from "../context/CartContext";
+import { getItems } from "../firebase/db"; 
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { category } = useParams(); 
+  const { idCategoria } = useParams(); 
+  const context = useContext(CartContext);
 
   useEffect(() => {
+    async function fetchProducts() {
+      setLoading(true);
+      try {
+        const items = await getItems();
+        const filtered = idCategoria
+          ? items.filter(item => item.category === idCategoria)
+          : items;
 
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        let result = data.products;
-        if (category) {
-          result = result.filter((p) => p.category === category);
-        }
-        setProducts(result);
+        setProducts(filtered);
+      } catch (error) {
+        console.error("Error cargando productos:", error);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error al cargar productos", err);
-        setLoading(false);
-      });
-  }, [category]);
+      }
+    }
 
+    fetchProducts();
+  }, [idCategoria, context]); 
   if (loading) return <p>Cargando productos...</p>;
 
   return <ItemList products={products} />;
